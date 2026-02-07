@@ -1,4 +1,5 @@
 let wasAtBottom = true;
+let lockBottom = true;
 const chatMessages = document.getElementById("chat-messages");
 const userInput = document.getElementById("user-input");
 const sendButton = document.getElementById("send-button");
