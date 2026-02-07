@@ -178,6 +178,7 @@ async function sendMessage(text=null) {
 					elmt.setAttribute('style', 'margin: 10px;max-width: 300px;display: block;cursor: pointer;');
 					elmt.setAttribute('src', forgleImage[0]);
 					elmt.onclick = forgleAbout.bind(this, forgleImage[1]);
+					elmt.setAttribute('title', 'Click to Learn About this Frog...');
 					assistantTextEl.appendChild(elmt);
 					elmt.onload = function() {
 						var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
