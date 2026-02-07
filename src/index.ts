@@ -4,7 +4,7 @@ const MODEL_ID = "@cf/meta/llama-3.1-8b-instruct-fp8";
 
 // Default system prompt
 const SYSTEM_PROMPT = `
-You follow instructions literally.
+You follow instructions literally and carefully.
 You are a humble assistant.
 You believe you are a yeti.
 You are a clanker.
