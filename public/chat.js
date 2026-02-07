@@ -142,9 +142,19 @@ async function sendMessage() {
 			buffer += decoder.decode(value, { stream: true });
 			const parsed = consumeSseEvents(buffer);
 			buffer = parsed.buffer;
+			var forgleImages = [
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYOn_KkZT_sCEo1ECyqn05QIa59NSziLaSHz2KDAYIi6Q2hyCwi8xCLFW70kuqBXcnFEmcVvgoNbd4rG6CYP--lwZDHB_pHiPsCZnTtzSMjg&s=10",
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZEKI_uyleXWibl99GBNZZqs40qNtvR_Ab4roDI4iBDbaly7h_MHNp0c8ZfMSIv_zmul73gZjWFEIKFmCezfXPfSbLWyubbsbMIAYtwqtkiQ&s=10",
+				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_o2I56FvpW_fMO5HiPdwYxgbCSDvo1heVFSgeGzTpJBYJWTVamnjK8eZIkNRL3p0e-0sN4VYHSwE0jnhtZvvHhdnjd6HUOZocjtwMUUvwvw&s=10"
+			];
 			for (const data of parsed.events) {
 				if (data === "[DONE]") {
-					assistantTextEl.innerHTML = assistantTextEl.innerHTML.replaceAll("[IMAGE:", "<img src=\"").replaceAll("]", ">");
+					var randomNumber = Math.floor(Math.random() * forgleImages.length);
+					var forgleImage = forgleImages[randomNumber];
+					var elmt = document.createElement('img');
+					elmt.setAttribute('style', 'margin: 10px;max-width: 300px;');
+					elmt.setAttribute('src', forgleImage);
+					assistantTextEl.appendChild(elmt);
 					sawDone = true;
 					buffer = "";
 					break;
