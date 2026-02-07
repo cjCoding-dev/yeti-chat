@@ -15,7 +15,7 @@ let chatHistory = [
 	{
 		role: "assistant",
 		content:
-			"**Grumble** Shut up and go away.",
+			"Hello?",
 	},
 ];
 let isProcessing = false;
