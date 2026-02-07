@@ -35,8 +35,14 @@ sendButton.addEventListener("click", sendMessage);
 /**
  * Sends a message to the chat API and processes the response
  */
-async function sendMessage() {
-	const message = userInput.value.trim();
+function forgleAbout(forgleName) {
+	var prompt = "Tell me about " + forgleName;
+}
+async function sendMessage(text=null) {
+	var message = userInput.value.trim();
+	if(text) {
+		message = text;
+	}
 
 	// Don't send empty messages
 	if (message === "" || isProcessing) return;
@@ -144,23 +150,23 @@ async function sendMessage() {
 			const parsed = consumeSseEvents(buffer);
 			buffer = parsed.buffer;
 			var forgleImages = [
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYOn_KkZT_sCEo1ECyqn05QIa59NSziLaSHz2KDAYIi6Q2hyCwi8xCLFW70kuqBXcnFEmcVvgoNbd4rG6CYP--lwZDHB_pHiPsCZnTtzSMjg&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZEKI_uyleXWibl99GBNZZqs40qNtvR_Ab4roDI4iBDbaly7h_MHNp0c8ZfMSIv_zmul73gZjWFEIKFmCezfXPfSbLWyubbsbMIAYtwqtkiQ&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_o2I56FvpW_fMO5HiPdwYxgbCSDvo1heVFSgeGzTpJBYJWTVamnjK8eZIkNRL3p0e-0sN4VYHSwE0jnhtZvvHhdnjd6HUOZocjtwMUUvwvw&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV_WG-B2VirQhtzmW48EV_XSZC8YE8IohbPg&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPXfuFaaYPo3otCvssqUdyMbr7jDn0zjC2yw&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FXU6brmaop3V7mqCmP6Qu2_-GZYeNsca8A&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhmHnM82Yb7SoqqIKBh2rJc5C339tll6sjpw&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxYabN0yLLfRp_21KPa5QggMTyoNSo7eQfAA&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsxvaNkViIruzLU9hOpzPHLVjzgGZv6VjHhw&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ_OP-fq-eCUVEO_gLdV2VHUcBDYFgjXOaLA&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSgQCqx0TJncIendgGJ8179DXahHIf4m4ZQ&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFGe-GsPeMsueeyCwLwHdZ-IIW39XyoodCQ&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGDktyHmLCPXjX6TL1cP0E7XKettXr5tekvQ&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy7f4bI474KOhzGTYbdxcNrPTcfh89ryMNqg&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH1bi-Z_UeaNZvNNGhvH9DAllYWOI6kciepg&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23kxLnS8bAddCZLjTSWaV4cvJnrpmk7x_og&s=10",
-				"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UvB5qKWB967sXaPCV4xHklCKHRHdJdhHLQ&s=10"
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYOn_KkZT_sCEo1ECyqn05QIa59NSziLaSHz2KDAYIi6Q2hyCwi8xCLFW70kuqBXcnFEmcVvgoNbd4rG6CYP--lwZDHB_pHiPsCZnTtzSMjg&s=10", "Tree Frog"]
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZEKI_uyleXWibl99GBNZZqs40qNtvR_Ab4roDI4iBDbaly7h_MHNp0c8ZfMSIv_zmul73gZjWFEIKFmCezfXPfSbLWyubbsbMIAYtwqtkiQ&s=10", "Australian Green Tree Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS_o2I56FvpW_fMO5HiPdwYxgbCSDvo1heVFSgeGzTpJBYJWTVamnjK8eZIkNRL3p0e-0sN4VYHSwE0jnhtZvvHhdnjd6HUOZocjtwMUUvwvw&s=10", "Foothill Yellow-Legged Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQV_WG-B2VirQhtzmW48EV_XSZC8YE8IohbPg&s=10", "American Bullfrog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRPXfuFaaYPo3otCvssqUdyMbr7jDn0zjC2yw&s=10", "Red-Eyed Tree Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT5FXU6brmaop3V7mqCmP6Qu2_-GZYeNsca8A&s=10", "Purple Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhmHnM82Yb7SoqqIKBh2rJc5C339tll6sjpw&s=10", "Purple Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQxYabN0yLLfRp_21KPa5QggMTyoNSo7eQfAA&s=10", "Surinam Toad"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsxvaNkViIruzLU9hOpzPHLVjzgGZv6VjHhw&s=10", "Surinam Toad"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSZ_OP-fq-eCUVEO_gLdV2VHUcBDYFgjXOaLA&s=10", "Goliath Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSXSgQCqx0TJncIendgGJ8179DXahHIf4m4ZQ&s=10", "Pixie Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGFGe-GsPeMsueeyCwLwHdZ-IIW39XyoodCQ&s=10", "Budgett's Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGDktyHmLCPXjX6TL1cP0E7XKettXr5tekvQ&s=10", "Budgett's Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTy7f4bI474KOhzGTYbdxcNrPTcfh89ryMNqg&s=10", "Oriental Fire-Bellied Toad"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQH1bi-Z_UeaNZvNNGhvH9DAllYWOI6kciepg&s=10", "Strawberry Poison-Dart Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS23kxLnS8bAddCZLjTSWaV4cvJnrpmk7x_og&s=10", "White-Lipped Tree Frog"],
+				["https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4UvB5qKWB967sXaPCV4xHklCKHRHdJdhHLQ&s=10", "Johnson's Horned Treefrog"]
 			];
 			for (const data of parsed.events) {
 				if (data === "[DONE]") {
@@ -168,8 +174,9 @@ async function sendMessage() {
 					var randomNumber = Math.floor(Math.random() * forgleImages.length);
 					var forgleImage = forgleImages[randomNumber];
 					var elmt = document.createElement('img');
-					elmt.setAttribute('style', 'margin: 10px;max-width: 300px;display: block;');
-					elmt.setAttribute('src', forgleImage);
+					elmt.setAttribute('style', 'margin: 10px;max-width: 300px;display: block;cursor: pointer;');
+					elmt.setAttribute('src', forgleImage[0]);
+					elmt.onclick = forgleAbout.bind(this, forgleImage[1]);
 					assistantTextEl.appendChild(elmt);
 					elmt.onload = function() {
 						var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
