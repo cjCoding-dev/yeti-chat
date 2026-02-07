@@ -69,7 +69,7 @@ async function sendMessage() {
 		const assistantTextEl = assistantMessageEl.querySelector("p");
 
 		// Scroll to bottom
-		if(wasAtBottom) {
+		if(wasAtBottom || lockBottom) {
 			chatMessages.scrollTop = chatMessages.scrollHeight;
 		}
 
@@ -100,7 +100,7 @@ async function sendMessage() {
 		const flushAssistantText = () => {
 			var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
 			assistantTextEl.textContent = responseText;
-			if(wasAtBottom) {
+			if(wasAtBottom || lockBottom) {
 				chatMessages.scrollTop = chatMessages.scrollHeight;
 			}
 		};
@@ -173,11 +173,11 @@ async function sendMessage() {
 					assistantTextEl.appendChild(elmt);
 					elmt.onload = function() {
 						var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
-						if(wasAtBottom) {
+						if(wasAtBottom || lockBottom) {
 							chatMessages.scrollTop = chatMessages.scrollHeight;
 						}
 					};
-					if(wasAtBottom) {
+					if(wasAtBottom || lockBottom) {
 						chatMessages.scrollTop = chatMessages.scrollHeight;
 					}
 					sawDone = true;
@@ -242,7 +242,7 @@ function addMessageToChat(role, content) {
 	chatMessages.appendChild(messageEl);
 
 	// Scroll to bottom
-	if(wasAtBottom) {
+	if(wasAtBottom || lockBottom) {
 		chatMessages.scrollTop = chatMessages.scrollHeight;
 	}
 }
