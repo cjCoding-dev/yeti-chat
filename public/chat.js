@@ -4,10 +4,6 @@ const userInput = document.getElementById("user-input");
 const sendButton = document.getElementById("send-button");
 const typingIndicator = document.getElementById("typing-indicator");
 
-chatMessages.addEventListener("scroll", function() {
-	wasAtBottom = scrollBottom(chatMessages) < BOTTOM_PADDING;
-});
-
 // Chat state
 let chatHistory = [
 	{
