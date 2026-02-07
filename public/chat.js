@@ -64,7 +64,7 @@ async function sendMessage() {
 
 	try {
 		// Create new assistant response element
-		var wasAtBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+		var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
 		const assistantMessageEl = document.createElement("div");
 		assistantMessageEl.className = "message assistant-message";
 		assistantMessageEl.innerHTML = "<p></p>";
@@ -101,7 +101,7 @@ async function sendMessage() {
 		let responseText = "";
 		let buffer = "";
 		const flushAssistantText = () => {
-			var wasAtBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+			var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
 			assistantTextEl.textContent = responseText;
 			if(wasAtBottom) {
 				chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -167,7 +167,7 @@ async function sendMessage() {
 			];
 			for (const data of parsed.events) {
 				if (data === "[DONE]") {
-					var wasAtBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+					var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
 					var randomNumber = Math.floor(Math.random() * forgleImages.length);
 					var forgleImage = forgleImages[randomNumber];
 					var elmt = document.createElement('img');
@@ -232,7 +232,7 @@ async function sendMessage() {
  * Helper function to add message to chat
  */
 function addMessageToChat(role, content) {
-	var wasAtBottom = out.scrollHeight - out.clientHeight <= out.scrollTop + 1;
+	var wasAtBottom = chatMessages.scrollHeight - chatMessages.clientHeight <= chatMessages.scrollTop + 1;
 	const messageEl = document.createElement("div");
 	messageEl.className = `message ${role}-message`;
 	messageEl.innerHTML = `<p>${content}</p>`;
